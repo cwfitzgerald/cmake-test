@@ -1,7 +1,6 @@
 set(SOURCES sum.cpp)
 set(HEADERS include/sum.hpp)
 
-
 simdpp_get_compilable_archs(ARCHES)
 simdpp_multiarch(ARCH_SOURCES ${SOURCES} ${ARCHES})
 

@@ -1,4 +1,5 @@
-#include <iostream>
+#include <cinttypes>
+#include <vector>
 
 #include <simdpp/simd.h>
 
@@ -17,11 +18,17 @@
 #endif
 
 namespace SIMDPP_ARCH_NAMESPACE {
-	std::size_t sumation(const std::vector<std::size_t>& array) {
-		(void) array;
-		return 1;
+	int32_t sumation(const std::vector<int32_t>& array) {
+		using simd_vec = simdpp::int32<SIMDPP_FAST_INT32_SIZE>;
+		simd_vec sum{};
+		std::size_t i = 0;
+		for (; i < ((array.size() / SIMDPP_FAST_INT32_SIZE) * SIMDPP_FAST_INT32_SIZE); i += SIMDPP_FAST_INT32_SIZE) {
+			simd_vec partial = simdpp::load_u(&array[i]);
+			sum = sum + partial;
+		}
+		return simdpp::reduce_add(sum);
 	}
 
 } // namespace SIMDPP_ARCH_NAMESPACE
 
-SIMDPP_MAKE_DISPATCHER((std::size_t)(sumation)((const std::vector<std::size_t>&) array))
+SIMDPP_MAKE_DISPATCHER((int32_t)(sumation)((const std::vector<int32_t>&) array))
