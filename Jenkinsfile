@@ -20,7 +20,7 @@ pipeline {
 cd build
 cmake .. -GNinja
 '''
-              sh 'ninja'
+              sh 'cd build; ninja'
             }
           }
         }
@@ -33,7 +33,7 @@ cmake .. -GNinja
 cd build
 cmake .. -GNinja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 '''
-              sh 'ninja'
+              sh 'cd build; ninja'
             }
           }
         }
