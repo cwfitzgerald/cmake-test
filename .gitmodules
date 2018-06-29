@@ -1,9 +1,9 @@
 [submodule "cmake-utils"]
 	path = "cmake-utils"
-	url = git@github.com:Sirflankalot/cmake-utils.git
+	url = https://github.com/cwfitzgerald/cmake-utils.git
 [submodule "third-party/CLI11"]
 	path = third-party/CLI11
-	url = git@github.com:CLIUtils/CLI11.git
+	url = https://github.com/CLIUtils/CLI11.git
 [submodule "third-party/libsimdpp"]
 	path = third-party/libsimdpp
-	url = git@github.com:p12tic/libsimdpp.git
+	url = https://github.com/p12tic/libsimdpp.git
