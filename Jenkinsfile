@@ -1,12 +1,12 @@
 pipeline {
-  agent any
+  agent {
+    label 'master'
+  }
   stages {
     stage('Prepare') {
       steps {
-        node('master') {
-          checkout scm
-          stash name: 'source', includes: '**/*'
-        }
+        checkout scm
+        stash name: 'source', includes: '**/*'
       }
     }
     stage('Build') {
