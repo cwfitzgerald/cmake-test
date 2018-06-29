@@ -5,7 +5,7 @@ pipeline {
       steps {
         node('master') {
           checkout scm
-          stash name: 'source', includes: '*'
+          stash name: 'source', includes: '**/*'
         }
       }
     }
