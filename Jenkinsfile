@@ -4,8 +4,8 @@ pipeline {
     stage('Build') {
       parallel {
         stage('Build-GCC') {
-          node('gce-worker') {
-            steps {
+          steps {
+            node('gce-worker') {
               sh '''mkdir build
 cd build
 cmake .. -GNinja
@@ -15,8 +15,8 @@ cmake .. -GNinja
           }
         }
         stage('Build-Clang') {
-          node('gce-worker') {
-            steps {
+          steps {
+            node('gce-worker') {
               sh '''mkdir build
 cd build
 cmake .. -GNinja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
